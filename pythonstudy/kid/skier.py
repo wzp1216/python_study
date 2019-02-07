@@ -1,8 +1,6 @@
 import pygame,sys,random
 skier_images=["skier_down.png","skier_right1.png","skier_right2.png","skier_left2.png","skier_left1.png"]
 
-global  speedH
-speedH = 10
 class SkierClass(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -19,7 +17,7 @@ class SkierClass(pygame.sprite.Sprite):
         self.image=pygame.image.load(skier_images[self.angle])
         self.rect=self.image.get_rect()
         self.rect.center=center
-        speed=[self.angle,speedH-abs(self.angle)*2]
+        speed=[self.angle,5-abs(self.angle)*2]
         return speed
 
     def move(self,speed):
@@ -73,8 +71,7 @@ pygame.init()
 screen=pygame.display.set_mode([640,640])
 clock=pygame.time.Clock()
 skier=SkierClass()
-speedH=10
-speed=[0,speedH]
+speed=[0,5]
 map_position=0
 points=0
 map0=create_map(20,29)
@@ -88,13 +85,12 @@ while True:
     for event in pygame.event.get():
         if event.type==pygame.QUIT:sys.exit()
         if event.type==pygame.KEYDOWN:
-            if event.key==pygame.K_LEFT:
+            if event.key==pygame.K_UP:
+                speed=[0,2]
+            elif event.key==pygame.K_LEFT:
                 speed=skier.turn(-1)
             elif event.key==pygame.K_RIGHT:
                 speed=skier.turn(1)
-            elif event.key==pygame.K_UP:
-                if speedH==10:  speedH=1
-                if speedH==1:  speedH=10
     skier.move(speed)
     map_position+=speed[1]
 
@@ -120,12 +116,15 @@ while True:
             pygame.time.delay(1000)
             skier.image=pygame.image.load("skier_down.png")
             skier.angle=0
-            speed=[0,speedH]
+            speed=[0,6]
             hit[0].passed=True
         elif hit[0].type=="flag" and not hit[0].passed:
             points+=10;
             obstacles.remove(hit[0])
 
-    score_text=font.render("Score: "+str(points),1,(0,0,0))
+    #score_text=font.render("Score: "+str(points),1,(0,0,0))
+    str1="speed "+str(speed[0])+"-"+str(speed[1])
+    score_text=font.render(str1,1,(0,0,0))
+
     animate()
 
