@@ -1,3 +1,9 @@
+最常用：
+git clone www...
+git add . 
+git commit -m "***"
+git push
+
 
 本地库改动，提交到远程库：
 git push origin master
