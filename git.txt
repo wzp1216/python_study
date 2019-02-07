@@ -4,6 +4,11 @@ git push origin master
 或git pull
 
 
+1.安装GIT
+2.SSH－KEY 生成并配置
+3配置用户名与邮箱
+
+
 git config --global user.name "your-user-name"
 git config --global user.emali "your-email"
 配置GIT用户信息，否则不能推拉；
