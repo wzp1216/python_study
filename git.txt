@@ -1,0 +1,28 @@
+
+本地库改动，提交到远程库：
+git push origin master
+或git pull
+
+
+git config --global user.name "your-user-name"
+git config --global user.emali "your-email"
+配置GIT用户信息，否则不能推拉；
+
+git init   //init the git dir
+
+git add filename  //add to cache
+
+git commit -m "note"   //commit to lib
+
+git diff    //diff the master and the local
+
+git status  //return status
+
+git push origin master -u //push new 
+git remote -v //look remoter lib
+
+git clone www....  //download code
+git push -u origin master //frist upload
+关联远程与本地库： git remote add origin www.wzp...
+
+
