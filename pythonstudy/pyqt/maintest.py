@@ -14,6 +14,7 @@ class mywin(QMainWindow,Ui_MainWindow):
         self.Mypic_btn.clicked.connect(self.mypic)
         self.TFpic_btn.clicked.connect(self.tfpic)
         self.test_btn.clicked.connect(self.test)
+        self.myfile='';
     def mypic(self):
         self.lcdNumber.setDigitCount(3)
         self.lcdNumber.display(123)
@@ -26,6 +27,7 @@ class mywin(QMainWindow,Ui_MainWindow):
         if(not (image.load(filename))):
             QMessageBox.information(self,"error","open file is erroe");
             return;
+        self.myfile=filename;
         pixmap=QPixmap()
         pixmap.convertFromImage(image)
         self.labelpic.setPixmap(pixmap);
@@ -37,6 +39,15 @@ class mywin(QMainWindow,Ui_MainWindow):
         self.lcdNumber.display(456)
         self.lcdNumber.show()
     def test(self):
+        #file=none  show a message;file open error show a message;
+        if (self.myfile.__len__()<=1):
+            QMessageBox.information(self,"error","no file is open");
+            return;
+        image=QImage();
+        if(not (image.load(self.myfile))):
+            QMessageBox.information(self,"error","open file is erroe");
+            return;
+        # file to numpy darry 28*28
         self.lcdNumber.setDigitCount(3)
         self.lcdNumber.display(789)
         self.lcdNumber.show()
