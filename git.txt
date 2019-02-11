@@ -1,4 +1,7 @@
 最常用：
+git@github.com:wzp1216/python_study.git
+
+
 git clone www...
 git add . 
 git commit -m "***"
