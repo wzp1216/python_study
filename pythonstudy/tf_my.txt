@@ -1,0 +1,24 @@
+
+1、基础
+使用图GRAPHS来计算；
+在会话SESSION中执行图；
+使用张量TENSORS来便利数据
+通过变量 VARIABLES维护状态；
+使用供给FEEDS 取回FETCHES将数据传入传出；
+
+图表示计算，图中节点为OP，一个OP获得0或多个张量；
+张量是按类型划分的多维数组；
+编程按两个阶段，构建 执行；先组织计算图；然后利用SESSION执行计算图中的OP操作；
+如在构建阶段，创建一个图表示训练网络，在执行阶段，反复执行一组OP实现训练；
+运行后SESS。CLOSE（）关闭运算，以释放资源；
+
+张量代表所有数据，一个张量包括一个静态类型的RANK和一个SHAPE，可以认为是一个N维数组；
+with tf.Session() as sess:
+    sess.run(init)
+    ss...
+    print(sess.run(state))
+可以在运行中取得中间结果FETCHES
+
+FEEDS供给;
+临时在计算中,提供张量;
+
