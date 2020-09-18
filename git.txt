@@ -17,7 +17,7 @@ git push origin master
 1.安装GIT
 2.SSH－KEY 生成并配置
 3配置用户名与邮箱
-
+ssh-keygen -t rsa -C "youremail@example.com"
 
 git config --global user.name "your-user-name"
 git config --global user.emali "your-email"
